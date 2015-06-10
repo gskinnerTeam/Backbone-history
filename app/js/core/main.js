@@ -1,5 +1,6 @@
 /**
  * Application controller.
+ * @class Main
  */
 (function (scope) {
 

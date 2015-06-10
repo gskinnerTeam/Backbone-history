@@ -1,5 +1,7 @@
 /**
  * Application router.
+ * @class Router
+ * @extends Backbone.Router
  */
 (function (scope) {
 

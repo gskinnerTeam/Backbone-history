@@ -1,5 +1,7 @@
 /**
  * Application view.
+ * @class View
+ * @extends Backbone.View
  */
 (function (scope) {
 
