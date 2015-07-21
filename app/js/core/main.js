@@ -31,9 +31,9 @@
 	 * @method parseFirstRoute
 	 */
 	p.parseFirstRoute = function () {
-		var route = String(window.location.hash); // We want a copy of the hash, not a reference.
+		var route = window.location.hash;
 		if (/^#\!\//.test(route)) {
-			route = route.substr(3);  // strip hashbang
+			route = route.substr(3); // strip hashbang
 			// rewrite the hash, since it is what Backbone reads when start is called.
 			if (window.history && window.history.replaceState) {
 				window.history.replaceState({}, '', route);

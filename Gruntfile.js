@@ -19,7 +19,6 @@ module.exports = function (grunt) {
 						 don't match if route contains '#' since that means we've already redirected
 						 don't match if route contains '.' since we don’t want to redirect files */
 						var expressions = [
-							// strip trailing slash
 							'^\/(.*)/$ /$1 [R]',
 							'^\/([^#.]+)(\\?.*)?$ /#$1$2 [R,L]'
 						];
