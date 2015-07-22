@@ -5,6 +5,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ /$1 [L,R=301]
 
 ## CRAWLERS ##
+# Swap out all / for _
+RewriteCond %{REQUEST_URI} !\.\w+$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/(.*) $1_$2 [L]
 # Home page fragment rewrite
 RewriteCond %{QUERY_STRING} ^_escaped_fragment_=$
 RewriteCond %{HTTP_HOST} (.*)
