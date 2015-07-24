@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 						 don't match if route contains '.' since we don’t want to redirect files */
 						var expressions = [
 							'^\/(.*)/$ /$1 [R]',
-							'^\/([^#.]+)(\\?.*)?$ /#$1$2 [R,L]'
+							'^\/([^#.?]+)(\\?.*)?$ /$2#$1 [R,L]'
 						];
 						// https://www.npmjs.com/package/connect-modrewrite
 						mw.push(require('connect-modrewrite')(expressions));

@@ -3,6 +3,8 @@
 	"version": "0.1.0",
 	"description": "A demonstration of how to take full advantage of the new HTML5 History API within Backbone.js",
 	"author": "Patrick McGuckin <patrick@gskinner.com> (http://gskinner.com)",
+  	"repository": "https://github.com/gskinnerTeam/Backbone-history",
+  	"license": "MIT",
 	"devDependencies": {
 		"connect-livereload": "^0.5.3",
 		"connect-modrewrite": "^0.8.1",
