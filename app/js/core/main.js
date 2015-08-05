@@ -9,21 +9,22 @@
 	function Main () {
 		scope.router = new scope.Router();
 		scope.router.on('route', this.updateView, this);
-		this.$el = $('#container');
+		this.container = $('#container');
 
 		this.parseFirstRoute();
 		Backbone.history.start({ pushState: true });
 	}
-	var p = Main.prototype;
+
+	var p = {};
 
 	/**
 	 * Remove the current view and inject a new one.
 	 * @method updateView
 	 */
 	p.updateView = function () {
-		this.view && this.view.remove();
-		this.view = new scope.View();
-		this.$el.append(this.view.el);
+		this.activeView && this.activeView.remove();
+		this.activeView = new scope.View();
+		this.container.append(this.activeView.el);
 	};
 
 	/**
@@ -32,7 +33,7 @@
 	 */
 	p.parseFirstRoute = function () {
 		var route = window.location.hash;
-		if (/^#\!\//.test(route)) {
+		if (/^#!\//.test(route)) {
 			route = route.substr(3); // strip hashbang
 			// rewrite the hash, since it is what Backbone reads when start is called.
 			if (!!window.history) {
@@ -43,6 +44,7 @@
 		}
 	};
 
+	 _.extend(Main.prototype, p);
 	scope.Main = Main;
 
 })(window.app);
