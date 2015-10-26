@@ -1,0 +1,43 @@
+* {
+	font-family: Helvetica;
+	margin: 0;
+	padding: 0;
+}
+
+.view {
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	overflow: auto;
+}
+
+.content {
+	width: auto;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	overflow: auto;
+}
+
+h1 {
+	color: white;
+	font-size: 50px;
+	margin-bottom: 10px;
+}
+
+.internal, .external {
+	width: 50%;
+	float: left;
+}
+
+a {
+	display: block;
+	text-decoration: none;
+	color: orange;
+	margin-bottom: 10px;
+}
+
+a:hover {
+	color: pink;
+}

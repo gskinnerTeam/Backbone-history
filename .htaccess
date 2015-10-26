@@ -1,0 +1,28 @@
+RewriteEngine On
+
+# Force no trailing slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+## CRAWLERS ##
+# Swap out all / for _
+RewriteCond %{REQUEST_URI} !\.\w+$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/(.*) $1_$2 [L]
+# Home page fragment rewrite
+RewriteCond %{QUERY_STRING} ^_escaped_fragment_=$
+RewriteCond %{HTTP_HOST} (.*)
+RewriteRule ^$ http://%1/fragments/home.html? [P,L]
+# Fragment rewrite for every other page
+RewriteCond %{QUERY_STRING} ^_escaped_fragment_=$
+RewriteCond %{HTTP_HOST} (.*)
+RewriteRule (.*) http://%1/fragments/$1.html? [P,L]
+
+## VIEWS ##
+# ...
+
+## PUSH STATE ##
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !index
+RewriteRule (.*) /#$1 [NE,L]
