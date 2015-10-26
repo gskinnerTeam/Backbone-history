@@ -1,1 +1,3 @@
-
+baseurl: /Backbone-history
+gems:
+  - jekyll-redirect-from
