@@ -1,3 +1,5 @@
 gems: jekyll-redirect-from
 title: Redirect to index
-redirect_from: .*
+redirect_from:
+  - /fruits
+  - /fruits/banana
