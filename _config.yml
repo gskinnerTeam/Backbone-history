@@ -1,7 +1,7 @@
 ---
-redirect_from: "/fruits"
-redirect_from: "/fruits/banana"
+redirect_from:
+  - /fruits
+  - /fruits/banana
 ---
-
 gems:
   - jekyll-redirect-from
