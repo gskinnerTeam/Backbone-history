@@ -1,5 +1,5 @@
 {
-	"name": "backbone-history-api",
+	"name": "Backbone-history",
 	"version": "0.1.0",
 	"description": "A demonstration of how to take full advantage of the new HTML5 History API within Backbone.js",
 	"author": "Patrick McGuckin <patrick@gskinner.com> (http://gskinner.com)",
