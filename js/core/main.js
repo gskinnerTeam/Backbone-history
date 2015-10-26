@@ -12,7 +12,7 @@
 		this.container = $('#container');
 
 		this.parseFirstRoute();
-		Backbone.history.start({ pushState: true });
+		Backbone.history.start({ pushState: true, root: '/Backbone-history/' });
 	}
 
 	var p = {};
