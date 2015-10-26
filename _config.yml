@@ -1,5 +1,7 @@
-gems: jekyll-redirect-from
-title: Redirect to index
-redirect_from:
-  - /fruits
-  - /fruits/banana
+---
+redirect_from: "/fruits"
+redirect_from: "/fruits/banana"
+---
+
+gems:
+  - jekyll-redirect-from
