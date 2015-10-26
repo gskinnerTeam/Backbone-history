@@ -1,4 +1,1 @@
-safe: false
-baseurl: /Backbone-history
-gems:
-  - jekyll-redirect-from
+
