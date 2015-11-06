@@ -15,7 +15,7 @@
 		Backbone.history.start({ pushState: true });
 	}
 
-	var p = {};
+	var p = Main.prototype;
 
 	/**
 	 * Remove the current view and inject a new one.
@@ -32,19 +32,14 @@
 	 * @method parseFirstRoute
 	 */
 	p.parseFirstRoute = function () {
-		var route = window.location.hash;
+		var route = location.hash;
 		if (/^#!\//.test(route)) {
 			route = route.substr(3); // strip hashbang
 			// rewrite the hash, since it is what Backbone reads when start is called.
-			if (!!window.history) {
-				window.history.replaceState({}, '', route);
-			} else {
-				window.location.replace(route);
-			}
+			!!history.pushState ? history.replaceState({}, '', route) : location.replace(route);
 		}
 	};
 
-	 _.extend(Main.prototype, p);
 	scope.Main = Main;
 
 })(window.app);

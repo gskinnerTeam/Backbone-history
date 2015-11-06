@@ -4,7 +4,10 @@
  * @param grunt
  */
 module.exports = function (grunt) {
-	var config = {
+
+	'use strict';
+
+	grunt.initConfig({
 		cwd: 'app/',
 		// https://github.com/gruntjs/grunt-contrib-connect
 		connect: {
@@ -65,17 +68,16 @@ module.exports = function (grunt) {
 				dest: 'app/templates/templates.compiled.js'
 			}
 		}
-	};
+	});
 
-	grunt.config.init(config);
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-handlebars');
 
-	grunt.task.loadNpmTasks('grunt-contrib-connect');
-	grunt.task.loadNpmTasks('grunt-contrib-watch');
-	grunt.task.loadNpmTasks('grunt-contrib-handlebars');
-
-	grunt.task.registerTask('default', [
+	grunt.registerTask('default', [
 		'handlebars',
 		'connect:server',
 		'watch'
 	]);
+
 };

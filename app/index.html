@@ -2,8 +2,6 @@
 <html>
 <head>
 	<title>Backbone.js HTML History API</title>
-	<!-- meta -->
-	<meta name="fragment" content="!" />
 	<!-- styles -->
 	<link rel="stylesheet" href="/styles/project.css" />
 	<!-- scripts -->
@@ -14,11 +12,11 @@
 	<script src="/templates/templates.compiled.js"></script>
 	<script src="/js/views/view.js"></script>
 	<script src="/js/routers/router.js"></script>
-	<script src="/js/core/main.js"></script>
+	<script src="/js/main.js"></script>
 </head>
 <body>
 	<div id="container"></div>
-	<script type="text/javascript"> app.main = new app.Main(); </script>
+	<script type="text/javascript"> $(function () { new app.Main(); });</script>
 	<script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>

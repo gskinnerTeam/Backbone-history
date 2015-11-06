@@ -10,6 +10,9 @@
 	var p = {};
 	var s = {};
 
+	p._origin = null;
+	p._exceptionRegex = null;
+
 	/**
 	 * Backbone's routes object.
 	 * @property routes
@@ -19,6 +22,15 @@
 		'': 'home',
 		'fruits(/:fruit)': 'fruit',
 		'*error': 'error'
+	};
+
+	/**
+	 * Set our origin and regex properties for use later.
+	 * @method initialize
+	 */
+	p.initialize = function () {
+		this._origin = location.protocol + '//' + location.hostname;
+		this._exceptionRegex =/^https?:\/{2}[^/]+\/(dir1|dir2)\//i;
 	};
 
 	/**
@@ -33,23 +45,29 @@
 	};
 
 	/**
+	 * Inspect an anchor click event.
+	 * @method processLink
+	 * @param event
+	 */
+	p.processLink = function (event) {
+		var target = event.target;
+		// link.href === “http://site.com/path/to/view”
+		if (this.isInternalLink(target.href)) {
+			event.preventDefault();
+			// element.getAttribute(‘href’) === “/path/to/view”
+			this.go(target.getAttribute('href'));
+		}
+	};
+
+	/**
 	 * Compares the live site origin to the origin on the anchor's href to determine whether or not it is an internal route.
-	 * @method detectInternalLink
-	 * @param link
+	 * @method isInternalLink
+	 * @param link {string}
 	 * @returns {boolean}
 	 */
-	p.detectInternalLink = function (link) {
-		// spike-only crawler check
-		if (link.className === 'crawler') { return false; }
-		// link.href === “http://site.com/path/to/view”
-		var destination = link.href;
-		var currentBase = window.location.protocol + '//' + window.location.hostname;
+	p.isInternalLink = function (link) {
 		// if bases match, check the path against exceptions
-		if (destination.indexOf(currentBase) >= 0) {
-			var exceptions = /(some\/directory|other\/directory)\/.+/i;
-			return destination.split(currentBase)[1].match(exceptions) === null;
-		}
-		return false;
+		return ~link.indexOf(this._origin) ? !this._exceptionRegex.test(this._origin) : false;
 	};
 
 	scope.Router = Backbone.Router.extend(p, s);

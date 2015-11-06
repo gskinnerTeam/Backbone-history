@@ -22,7 +22,6 @@
 	/**
 	 * Render the view, fetching our Handlebars template.
 	 * @method render
-	 * @returns {View.prototype}
 	 */
 	p.render = function () {
 		var rand = Math.random();
@@ -59,14 +58,9 @@
 	 * @returns {boolean}
 	 */
 	p.handleAnchorClick = function (event) {
-		var target = event.currentTarget;
 		// allow CTRL/CMD+Clicks through
 		if (event.ctrlKey || event.metaKey) { return true; }
-		if (scope.router.detectInternalLink(target)) {
-			event.preventDefault();
-			// element.getAttribute(‘href’) === “/path/to/view”
-			scope.router.go(target.getAttribute('href'));
-		}
+		scope.router.processLink(event);
 	};
 
 	scope.View = Backbone.View.extend(p, s);
